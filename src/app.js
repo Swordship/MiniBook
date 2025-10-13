@@ -3,7 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 require('dotenv').config();
-
+const authRoutes = require('./routes/authRoute.js');
 const app = express();
 
 app.use(helmet());
@@ -19,5 +19,7 @@ app.get('/health', (req, res) => {
         environment: process.env.NODE_ENV
     });
 });
+
+app.use('/auth' ,authRoutes);
 
 module.exports = app;
