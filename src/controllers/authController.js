@@ -26,14 +26,16 @@ try {
         error : 'Intertnal server error',
         details : error.message
     })   
-}};
+};
+
+};
 
 const login = async (req, res) => {
   const {email, password} = req.body;
 
   try {
     const user = await prisma.user.findUnique({
-      where: { email:email }}
+      where: { email}}
     );
     if(!user){
         return res.status(404).json({
