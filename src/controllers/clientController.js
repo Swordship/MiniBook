@@ -32,7 +32,33 @@ const getAllClients = async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch clients' });
   }
 }
+const updateClient = async (req,res)=>{
+  const {name} = req.body;
+  const {id} = req.params;
+  const userId = req.user.userId;
+
+  try{
+    const updateClient = await prisma.client.updateMany({
+      where:{
+        id : id,
+        userId : userId
+      },
+      data:{
+        name : name
+      },
+    });
+    if(updateClient.count === 0){
+      return res.status(404).json({
+        error : 'Client not found or unauthorized'
+      });
+    }
+    res.status(200).json({message : 'Client updated successfully'});
+  }catch(error){
+    res.status(500).json({error : 'Failed to update client'});
+  }
+}
 module.exports = {
   createClient,
-  getAllClients
+  getAllClients,
+  updateClient
 };
