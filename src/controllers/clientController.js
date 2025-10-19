@@ -57,8 +57,31 @@ const updateClient = async (req,res)=>{
     res.status(500).json({error : 'Failed to update client'});
   }
 }
+const deleteClient = async (req,res)=>{
+  const {id} = req.params;
+  const userId = req.user.userId;
+
+  try{
+    const deleteClient = await prisma.client.deleteMany({
+      where:{
+        id:id,
+        userId : userId
+      },
+    });
+    if(deleteClient.count === 0){
+      return res.status(404).json({
+        error : 'Client not found or unauthorized'
+      });
+    }
+    res.status(200).json({message : 'Client deleted successfully'});
+  }
+  catch(error){
+    res.status(500).json({error : 'Failed to delete client'});
+  }
+}
 module.exports = {
   createClient,
   getAllClients,
-  updateClient
+  updateClient,
+  deleteClient
 };

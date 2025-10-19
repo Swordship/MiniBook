@@ -9,4 +9,5 @@ router.get('/getClients',authenticate, clientController.getAllClients);
 
 router.put('/updateClient',authenticate, clientController.updateClient);
 
+router.delete('/deleteClient',authenticate, clientController.deleteClient);
 module.exports = router;
