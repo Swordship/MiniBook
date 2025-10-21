@@ -60,6 +60,9 @@ const updateClient = async (req,res)=>{
 const deleteClient = async (req,res)=>{
   const {id} = req.params;
   const userId = req.user.userId;
+  console.log('--- DEBUGGING DELETE ---');
+  console.log('Client ID to delete:', id);
+  console.log('User ID who is deleting:', userId);
 
   try{
     const deleteClient = await prisma.client.deleteMany({
