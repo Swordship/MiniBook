@@ -7,7 +7,7 @@ router.post('/createClients', authenticate, clientController.createClient);
 
 router.get('/getClients',authenticate, clientController.getAllClients);
 
-router.put('/updateClient',authenticate, clientController.updateClient);
+router.put('/updateClient/:id',authenticate, clientController.updateClient);
 
-router.delete('/deleteClient',authenticate, clientController.deleteClient);
+router.delete('/deleteClient/:id',authenticate, clientController.deleteClient);
 module.exports = router;
