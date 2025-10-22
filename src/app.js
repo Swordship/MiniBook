@@ -5,6 +5,7 @@ const morgan = require('morgan');
 require('dotenv').config();
 const authRoutes = require('./routes/authRoute.js');
 const clientRoutes = require('./routes/clientRoute.js');
+const invoiceRoutes = require('./routes/invoiceRoute.js');
 const app = express();
 
 app.use(helmet());
@@ -23,4 +24,5 @@ app.get('/health', (req, res) => {
 
 app.use('/auth' ,authRoutes);
 app.use('/clients', clientRoutes);
+app.use('/invoices',invoiceRoutes);
 module.exports = app;

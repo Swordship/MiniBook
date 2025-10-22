@@ -4,7 +4,7 @@ const invoiceController = require('../controllers/invoiceController');
 const authMiddleware = require('../middleware/authMiddleware');
 
 const {createInvoice, updateInvoice} = require('../schema/invoiceSchema');
-const validate = require('../middleware/validateMiddleware');
+const validate = require('../middleware/validate');
 
 router.post('/createInvoice',authMiddleware, validate(createInvoice), invoiceController.createInvoice);
 
