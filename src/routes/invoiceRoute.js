@@ -3,11 +3,11 @@ const router = express.Router();
 const invoiceController = require('../controllers/invoiceController');
 const authMiddleware = require('../middleware/authMiddleware');
 
-const {createInvoice, updateInvoice} = require('../schema/invoiceSchema');
+const {createInvoiceSchema, updateInvoiceSchema} = require('../schema/invoiceSchema');
 const validate = require('../middleware/validate');
 
-router.post('/createInvoice',authMiddleware, validate(createInvoice), invoiceController.createInvoice);
+router.post('/createInvoice',authMiddleware, validate(createInvoiceSchema), invoiceController.createInvoice);
 
-router.put('/updateInvoice/:id',authMiddleware, validate(updateInvoice), invoiceController.updateInvoice);  
+router.put('/updateInvoice/:id',authMiddleware, validate(updateInvoiceSchema), invoiceController.updateInvoice);  
 
 module.exports = router;
