@@ -10,4 +10,6 @@ router.post('/createInvoice',authMiddleware, validate(createInvoiceSchema), invo
 
 router.put('/updateInvoice/:id',authMiddleware, validate(updateInvoiceSchema), invoiceController.updateInvoice);  
 
+router.get('/getInvoices',authMiddleware, invoiceController.getAllInvoice);
+
 module.exports = router;
