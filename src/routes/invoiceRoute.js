@@ -13,4 +13,6 @@ router.put('/updateInvoice/:id',authMiddleware, validate(updateInvoiceSchema), i
 router.get('/getInvoices',authMiddleware, invoiceController.getAllInvoice);
 
 router.delete('/deleteInvoice/:id',authMiddleware, invoiceController.deleteInvoice);
+
+router.get('/getInvoice/:id',authMiddleware, invoiceController.getoneInvoice);
 module.exports = router;
